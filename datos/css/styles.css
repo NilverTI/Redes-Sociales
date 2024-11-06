@@ -1,0 +1,201 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    background-image: url('../img/fondo.gif');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+header {
+    padding: 10px 0;
+}
+
+.fondo-logo {
+    background-color: rgba(27, 27, 27, 0.5);
+    border-radius: 35px;
+    backdrop-filter: blur(15px);
+    padding: 5px;
+    display: inline-block;
+}
+
+.fondo-descripcion {
+    background-color: rgba(27, 27, 27, 0.5);
+    border-radius: 25px;
+    backdrop-filter: blur(15px);
+    padding: 2px 10px;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+.fondo-descripcion p {
+    color: white;
+    margin: 0;
+}
+
+.logo-nombre {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#logo {
+    max-width: 100px;
+    margin-right: 10px;
+}
+
+h1 {
+    margin: 0;
+    color: #ff0000;
+}
+
+.logo-nombre h3 {
+    margin: 5px 0 0;
+    font-size: 1.2em;
+    color: #934f4f;
+    text-align: left; 
+}
+
+section p {
+    margin: 20px 0;
+}
+
+.botones {
+    margin: 5px 0; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.boton {
+    margin: 5px 0;
+    padding: 15px 25px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    position: relative; /* Necesario para los pseudo-elementos */
+    overflow: hidden; /* Para asegurar que las barras no se salgan del contorno */
+    border: 2px solid transparent; /* Borde invisible para que se vea solo cuando se activa */
+    transition: ease-in 0.3s;
+}
+
+.icono-boton {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 5px;
+}
+
+.boton span {
+    flex-grow: 0.8;
+    text-align: center;
+}
+
+/* Animación de los bordes */
+.boton::before, .boton::after, .boton::before, .boton::after {
+    content: '';
+    position: absolute;
+    background-color: #ff0000; /* Color del borde */
+    transition: all 0.4s ease;
+    border-radius: 25px; /* Hace que el contorno sea redondeado */
+}
+
+/* Borde superior (parte superior) */
+.boton::before {
+    top: -100%; /* Comienza fuera del botón */
+    left: 0;
+    height: 2px;
+    width: 100%;
+}
+
+/* Borde inferior (parte inferior) */
+.boton::after {
+    bottom: -100%; /* Comienza fuera del botón */
+    left: 0;
+    height: 2px;
+    width: 100%;
+}
+
+/* Borde izquierdo */
+.boton::before {
+    left: -100%;
+    width: 2px;
+    height: 100%;
+    transition: all 0.4s ease;
+}
+
+/* Borde derecho */
+.boton::after {
+    right: -100%;
+    width: 2px;
+    height: 100%;
+    transition: all 0.4s ease;
+}
+
+/* Animación de los bordes cuando se pasa el mouse */
+.boton:hover::before {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.boton:hover::after {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.boton:hover {
+    background-color: #010912;
+    border-color: #ff0000; /* Agrega el borde visible en los lados */
+    box-shadow: 0 15px 5px rgba(216, 0, 0, 0.8);
+    box-shadow: 0 0 10px rgba(216, 0, 0, 0.7); /* Sombra adicional al pasar el mouse */
+}
+
+/* Borde izquierdo y derecho */
+.boton:hover::before {
+    animation: ease-in moveBar 0.6s forwards reverse;
+}
+
+.boton:hover::after {
+    animation: ease-in moveBar 0.6s forwards;
+}
+
+/* Animación para los bordes izquierdo y derecho */
+@keyframes moveBar {
+    0% {
+        width: 0;
+    }
+
+    1% {
+        border: 1px solid #ff0000;
+    }
+
+    40% {
+        width: 1rem;
+    }
+
+    99% {
+        border: 1px solid #ff0000;
+        left: 99%;
+    }
+
+    100% {
+        border: none;
+        left: 100%;
+        width: 0;
+    }
+}
